@@ -12,5 +12,9 @@ public class ClienteController {
         return null;
     }
 
+    public String pagar(int idCliente){
+        //Utiliza la función de pago de la clase Pago y retorna la boleta
+        return "nueva boleta";
+    }
 
 }
