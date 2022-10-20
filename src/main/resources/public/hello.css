@@ -33,7 +33,14 @@ code, .card .line-numbers {
   width: 30rem;
   height: 15rem;
   perspective: 150rem;
-  margin-top: 5rem;
+}
+
+.card:first-child {
+  margin-bottom: 3rem;
+}
+
+.card ~ .card {
+  margin-top: 2rem;
 }
 
 .card-front, .card-back {

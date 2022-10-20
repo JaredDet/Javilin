@@ -11,8 +11,14 @@
     <link rel="stylesheet" href="/public/hello.css" type="text/css">
 </head>
 <body>
+
+!{var index = 0}
+
 @for(var page : pages)
-    <div class="card">
+
+    !{index++}
+
+    <div class="card" id="card${index}">
         <div class="card-back">
             <div class="line-numbers">
                 <div>1</div>
@@ -25,10 +31,13 @@
                 <div>8</div>
                 <div>9</div>
             </div>
-            <code><span class="variable">const </span><span class="function">Acerca de mí: </span><span class="operator">= </span><span>{</span>
-                <div class="indent"><span class="property">nombre</span><span class="operator">: </span><span class="string">${page.name()}</span><span>,</span>
+            <code><span class="variable">const </span><span class="function">Acerca de mí: </span><span
+                        class="operator">= </span><span>{</span>
+                <div class="indent"><span class="property">nombre</span><span class="operator">: </span><span
+                            class="string">${page.name()}</span><span>,</span>
                 </div>
-                <div class="indent"><span class="property">ocupación</span><span class="operator">: </span><span class="string">${page.title()}</span><span>,</span>
+                <div class="indent"><span class="property">ocupación</span><span class="operator">: </span><span
+                            class="string">${page.title()}</span><span>,</span>
                 </div>
                 <div class="indent"><span class="property">contacto</span><span class="operator">: </span><span>{</span>
                     <div class="indent"><span class="property">email</span><span class="operator">: </span><span
@@ -52,10 +61,13 @@
                 <div>8</div>
                 <div>9</div>
             </div>
-            <code><span class="variable">this</span><span>.</span><span class="method">addEventListener</span><span>(</span><span
-                        class="string">'mouseover'</span><span>, </span><span class="function">() => </span><span>{ </span>
+            <code><span class="variable">this</span><span>.</span><span
+                        class="method">addEventListener</span><span>(</span><span
+                        class="string">'mouseover'</span><span>, </span><span
+                        class="function">() => </span><span>{ </span>
                 <div class="indent"><span class="variable">this</span><span>.</span><span
-                            class="property">flipCard </span><span>= </span><span class="boolean">true</span><span>;</span>
+                            class="property">flipCard </span><span>= </span><span
+                            class="boolean">true</span><span>;</span>
                 </div>
                 <span>});</span>
             </code>
