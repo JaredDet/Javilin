@@ -8,15 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenida</title>
-    <link rel="stylesheet" href="/public/hello.css" type="text/css">
+    <link rel="stylesheet" href="hello.css" type="text/css">
 </head>
 <body>
 
-!{var index = 0}
+!{var index = 0;}
 
 @for(var page : pages)
 
-    !{index++}
+    !{index++;}
 
     <div class="card" id="card${index}">
         <div class="card-back">
