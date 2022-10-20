@@ -11,6 +11,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.function.Predicate;
 
 public abstract class Dao<T, ID> {
 
@@ -40,14 +41,27 @@ public abstract class Dao<T, ID> {
         return lector.parse();
     }
 
-    public abstract T get(ID id);
+    public T get(ID id) {
+        return lector.parse()
+                .stream()
+                .filter(mismoId(id))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("No encontrado"));
+    }
 
     public void modificar(ID id, T nuevo) throws CsvRequiredFieldEmptyException, CsvDataTypeMismatchException, IOException {
         eliminar(id);
         escritor.write(nuevo);
     }
 
-    public abstract void eliminar(ID id) throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException;
+    public void eliminar(ID id) throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
+        var registros = lector.parse()
+                .stream()
+                .filter(distintoId(id));
+
+        eliminarTodos();
+        escritor.write(registros);
+    }
 
     // TODO: Mejorar la lógica de este método
     public void eliminarTodos() throws IOException {
@@ -60,4 +74,8 @@ public abstract class Dao<T, ID> {
             Files.writeString(ruta, primeraLinea);
         }
     }
+
+    protected abstract Predicate<T> mismoId(ID id);
+
+    protected abstract Predicate<T> distintoId(ID id);
 }

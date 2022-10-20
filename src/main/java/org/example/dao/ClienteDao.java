@@ -1,10 +1,9 @@
 package org.example.dao;
 
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.example.model.Cliente;
 
 import java.io.IOException;
+import java.util.function.Predicate;
 
 public class ClienteDao extends Dao<Cliente, String> {
 
@@ -13,21 +12,12 @@ public class ClienteDao extends Dao<Cliente, String> {
     }
 
     @Override
-    public Cliente get(String nombre) {
-        return lector.parse()
-                .stream()
-                .filter(cliente -> cliente.getNombre().equals(nombre))
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("No encontrado"));
+    protected Predicate<Cliente> mismoId(String id) {
+        return cliente -> cliente.getNombre().equals(id);
     }
 
     @Override
-    public void eliminar(String nombre) throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
-        var clientes = lector.parse()
-                .stream()
-                .filter(cliente -> !cliente.getNombre().equals(nombre));
-
-        eliminarTodos();
-        escritor.write(clientes);
+    protected Predicate<Cliente> distintoId(String id) {
+        return cliente -> !cliente.getNombre().equals(id);
     }
 }
