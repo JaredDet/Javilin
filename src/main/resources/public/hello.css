@@ -15,6 +15,7 @@ html {
 body {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -32,6 +33,7 @@ code, .card .line-numbers {
   width: 30rem;
   height: 15rem;
   perspective: 150rem;
+  margin-top: 5rem;
 }
 
 .card-front, .card-back {
@@ -155,4 +157,3 @@ code, .card .line-numbers {
 .card .boolean {
   color: #4dd0e1;
 }
-

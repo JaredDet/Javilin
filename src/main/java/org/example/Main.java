@@ -38,11 +38,13 @@ public class Main {
         var pages = List.of(page1, page2);
         ctx.render("hello.jte", Collections.singletonMap("pages", pages));
     }
+
     private static void configure(JavalinConfig config) {
-        JavalinJte.configure(createTemplateEngine());
+        JavalinJte.configure(createTemplateEngineHTML());
+        config.addStaticFiles(staticFileConfig -> staticFileConfig.hostedPath = "/public");
     }
 
-    private static TemplateEngine createTemplateEngine() {
+    private static TemplateEngine createTemplateEngineHTML() {
         DirectoryCodeResolver codeResolver = new DirectoryCodeResolver(Path.of("src", "main", "jte"));
         return TemplateEngine.create(codeResolver, ContentType.Html);
     }
