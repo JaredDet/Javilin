@@ -26,15 +26,15 @@
                 <div>9</div>
             </div>
             <code><span class="variable">const </span><span class="function">Acerca de mí: </span><span class="operator">= </span><span>{</span>
-                <div class="indent"><span class="property">nombre</span><span class="operator">: </span><span class="string">${page.name}</span><span>,</span>
+                <div class="indent"><span class="property">nombre</span><span class="operator">: </span><span class="string">${page.name()}</span><span>,</span>
                 </div>
-                <div class="indent"><span class="property">ocupación</span><span class="operator">: </span><span class="string">${page.title}</span><span>,</span>
+                <div class="indent"><span class="property">ocupación</span><span class="operator">: </span><span class="string">${page.title()}</span><span>,</span>
                 </div>
                 <div class="indent"><span class="property">contacto</span><span class="operator">: </span><span>{</span>
                     <div class="indent"><span class="property">email</span><span class="operator">: </span><span
-                                class="string">${page.email}</span><span>,</span></div>
+                                class="string">${page.email()}</span><span>,</span></div>
                     <div class="indent"><span class="property">sitio web</span><span class="operator">:</span><span
-                                class="string">${page.website}</span></div>
+                                class="string">${page.website()}</span></div>
                     <span>}</span>
                 </div>
                 <span>}</span>

@@ -23,17 +23,20 @@ public class Main {
     }
 
     private static void renderHelloPage(Context ctx) {
-        var page1 = new HelloPage();
-        page1.name = "Víctor Mardones";
-        page1.title = "Desarrollador";
-        page1.email = "v.mardones04@ufromail.cl";
-        page1.website = "v.mardones.com";
+        var name = "Víctor Mardones";
+        var title = "Desarrollador";
+        var email = "v.mardones04@ufromail.cl";
+        var website = "v.mardones.com";
 
-        var page2 = new HelloPage();
-        page2.name = "Javier Márquez";
-        page2.title = "Desarrollador";
-        page2.email = "f.marquez01@ufromail.cl";
-        page2.website = "";
+        var page1 = new HelloPage(name, title, email, website);
+
+        name = "Javier Márquez";
+        title = "Desarrollador";
+        email = "f.marquez01@ufromail.cl";
+        website = "";
+
+        var page2 = new HelloPage(name, title, email, website);
+
 
         var pages = List.of(page1, page2);
         ctx.render("hello.jte", Collections.singletonMap("pages", pages));

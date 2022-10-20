@@ -1,9 +1,5 @@
 package org.example.model;
 
-public class HelloPage {
+public record HelloPage(String name, String title, String email, String website) {
 
-    public String name;
-    public String title;
-    public String email;
-    public String website;
 }
