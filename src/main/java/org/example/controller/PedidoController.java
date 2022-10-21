@@ -6,11 +6,15 @@ import java.util.List;
 
 public class PedidoController {
 
-    public List<Pedido> getPedidos(int idCliente) {
-        return null;
+    public Pedido getPedido(String idCliente, String idPedido) {
+        var pedidos = new PedidoController().getPedidos(idCliente);
+        return pedidos.stream()
+                .filter(pedido -> pedido.getId().equals(idPedido))
+                .findFirst().orElse(null);
     }
 
-    public Pedido getPedido(int idCliente, int idPedido){
-        return null;
+    private List<Pedido> getPedidos(String idCliente) {
+        var cliente = new ClienteController().getClienteById(idCliente);
+        return cliente.getPedidos();
     }
 }

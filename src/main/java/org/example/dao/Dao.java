@@ -16,7 +16,7 @@ import java.util.function.Predicate;
 public abstract class Dao<T, ID> {
 
     private static final String PLANTILLA_RUTA = "dataset/{}.csv";
-    private final String rutaDataset;
+    protected final String rutaDataset;
 
     protected final CsvToBean<T> lector;
     protected final StatefulBeanToCsv<T> escritor;
@@ -42,6 +42,7 @@ public abstract class Dao<T, ID> {
     }
 
     public T get(ID id) {
+
         return lector.parse()
                 .stream()
                 .filter(mismoId(id))
@@ -63,7 +64,6 @@ public abstract class Dao<T, ID> {
         escritor.write(registros);
     }
 
-    // TODO: Mejorar la lógica de este método
     public void eliminarTodos() throws IOException {
         try (var extractor = new BufferedReader(new FileReader(rutaDataset))) {
 

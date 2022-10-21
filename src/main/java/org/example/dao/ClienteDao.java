@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 
 public class ClienteDao extends Dao<Cliente, String> {
 
+
     public ClienteDao() throws IOException {
         super(Cliente.class);
     }
