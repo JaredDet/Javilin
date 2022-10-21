@@ -1,4 +1,6 @@
 .idea
 target
 jte-classes
+uml/*
+!uml/*.vpp
 
