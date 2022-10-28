@@ -11,6 +11,9 @@ import java.nio.file.Path;
 
 public class HtmlAndCssConfig {
 
+    private HtmlAndCssConfig() {
+    }
+
     public static void configure(JavalinConfig config) {
         config.staticFiles.add("/static", Location.CLASSPATH);
 
