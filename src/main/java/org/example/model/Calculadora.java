@@ -1,10 +1,8 @@
 package org.example.model;
 
-import java.util.function.DoubleFunction;
-import java.util.function.DoubleSupplier;
-
 public class Calculadora {
 
+    private static String input = "";
     private static double cache = 0;
 
     private Calculadora() {
@@ -12,19 +10,21 @@ public class Calculadora {
 
     public static String getResultado(Operacion operacion, double x) {
 
-        var resultado = operacion.operacionCalculadora.apply(x);
+        var resultado = operacion.funcion.apply(x);
+
         try {
             cache = resultado;
         } catch (IllegalArgumentException e) {
             cache = 0;
             System.err.println(e.getMessage());
         }
+
         return "" + resultado;
     }
 
     public static String getResultado(OperacionAvanzada operacion) {
 
-        var resultado = operacion.operacionCalculadora.getAsDouble();
+        var resultado = operacion.funcion.getAsDouble();
         try {
             cache = resultado;
         } catch (IllegalArgumentException e) {
@@ -82,38 +82,11 @@ public class Calculadora {
         return -cache;
     }
 
-    public static String getCache() {
-        return cache + "";
+    public static String getInput() {
+        return input;
     }
 
-    public static void setCache(String newCache) {
-        cache = Double.parseDouble(newCache);
-    }
-}
-
-public enum Operacion {
-    SUMA(Calculadora::sumar),
-    RESTA(Calculadora::restar),
-    MULTIPLICACION(Calculadora::multiplicar),
-    DIVISION(Calculadora::dividir);
-
-    final DoubleFunction<Double> operacionCalculadora;
-
-    Operacion(DoubleFunction<Double> operacionCalculadora) {
-        this.operacionCalculadora = operacionCalculadora;
-    }
-}
-
-enum OperacionAvanzada {
-    CUADRADO(Calculadora::elevarAlCuadrado),
-    RAIZ(Calculadora::sacarRaizCuadrada),
-    RECIPROCO(Calculadora::sacarReciproco),
-    PORCENTAJE(Calculadora::sacarPorcentaje),
-    SIGNO(Calculadora::cambiarSigno);
-
-    final DoubleSupplier operacionCalculadora;
-
-    OperacionAvanzada(DoubleSupplier operacionCalculadora) {
-        this.operacionCalculadora = operacionCalculadora;
+    public static void setInput(String input) {
+        Calculadora.input = input;
     }
 }
