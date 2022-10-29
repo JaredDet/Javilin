@@ -13,12 +13,11 @@ public class CalculadoraController {
 
     public static void renderPage(Context ctx) {
         if (ctx.queryParam("operacion") == null) {
-            ctx.render("calculadora.jte", Map.of("calculadora", new Calculadora()));
+            ctx.render("calculadora.jte", Map.of("calculadora", new Calculadora(), "esPrimeraOperacion", true));
         } else {
             var calculadora = new Calculadora(ctx.queryParam("cache"),
                     ctx.queryParam("operacion"), ctx.queryParam("input"));
-
-            ctx.render("calculadora.jte", Map.of("calculadora", calculadora));
+            ctx.render("calculadora.jte", Map.of("calculadora", calculadora, "esPrimeraOperacion", false));
         }
     }
 }

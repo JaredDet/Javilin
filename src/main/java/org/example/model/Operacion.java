@@ -1,6 +1,6 @@
 package org.example.model;
 
-import java.util.function.BiFunction;
+import java.util.function.ToDoubleBiFunction;
 
 public enum Operacion {
     NINGUNA((x, y) -> {
@@ -26,13 +26,13 @@ public enum Operacion {
     }),
     PORCENTAJE((x, y) -> x / 100);
 
-    Operacion(BiFunction<Double, Double, Double> operacion) {
+    Operacion(ToDoubleBiFunction<Double, Double> operacion) {
         this.operacion = operacion;
     }
 
-    private final BiFunction<Double, Double, Double> operacion;
+    private final ToDoubleBiFunction<Double, Double> operacion;
 
     public double calcular(double cache, double input) {
-        return operacion.apply(cache, input);
+        return operacion.applyAsDouble(cache, input);
     }
 }

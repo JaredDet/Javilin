@@ -11,7 +11,7 @@
     </content>
     <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: io.javalin:javalin:5.1.1" level="project" />
+    <orderEntry type="library" name="Maven: io.javalin:javalin:5.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:11.0.12" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.toolchain:jetty-jakarta-servlet-api:5.0.2" level="project" />
@@ -43,13 +43,13 @@
     <orderEntry type="library" name="Maven: gg.jte:jte:2.2.2" level="project" />
     <orderEntry type="library" name="Maven: gg.jte:jte-runtime:2.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.owasp.encoder:encoder:1.2.3" level="project" />
-    <orderEntry type="library" name="Maven: io.javalin:javalin-rendering:5.1.1" level="project" />
+    <orderEntry type="library" name="Maven: io.javalin:javalin-rendering:5.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
-    <orderEntry type="library" name="Maven: com.opencsv:opencsv:5.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.opencsv:opencsv:5.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.12.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.commons:commons-text:1.9" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-text:1.10.0" level="project" />
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.4" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.2" level="project" />
