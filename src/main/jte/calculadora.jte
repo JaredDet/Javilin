@@ -1,5 +1,8 @@
 @import org.example.model.Calculadora
 @import org.example.model.Operacion
+@param Calculadora calculadora
+
+!{var input = calculadora.operacion() == Operacion.NINGUNA ? "0" : calculadora.calcular();}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,43 +15,81 @@
 </head>
 
 <body>
-<div class="calculator">
+<form class="calculator">
     <div class="display">
         <div id="display">
-            <input type="text" id="entrada" name="entrada" value = ${Calculadora.getCache()} required readonly>
+            <input type="text" id="cache" name="cache" hidden readonly>
+            <input type="text" id="operacion" name="operacion" hidden readonly>
+            <input type="text" id="input" name="input" value="${input}" readonly>
         </div>
     </div>
     <div class="keys">
         <div class="row-1">
-            <button id="clear" class="top">AC</button>
-            <button class="top" id="negative"><sup>+</sup>/-</button>
-            <button class="top" id="percent">%</button>
-            <button class="operator" value="/">&#247;</button>
+            <input type="button" id="clear" class="top" value="AC" onclick="borrarTodo()">
+            <input type="button" class="top" id="negative" value="+/-" onclick="invertirSigno()">
+            <input type="button" class="top" id="percent" value="%">
+            <input type="button" class="operator" value="/">
         </div>
         <div class="row-2">
-            <button class="number" onClick="agregarNumero()" value="7">7</button>
-            <button class="number" onClick="agregarNumero()" value="8">8</button>
-            <button class="number" onClick="agregarNumero()" value="9">9</button>
-            <button class="operator" value="*">&times;</button>
+            <input type="button" class="number" value="7" onclick="agregarNumero()">
+            <input type="button" class="number" value="8" onclick="agregarNumero()">
+            <input type="button" class="number" value="9" onclick="agregarNumero()">
+            <input type="button" class="operator" value="*">
         </div>
         <div class="row-3">
-            <button class="number" onClick="agregarNumero()" value="4">4</button>
-            <button class="number" onClick="agregarNumero()" value="5">5</button>
-            <button class="number" onClick="agregarNumero()" value="6">6</button>
-            <button class="operator" value="-">-</button>
+            <input type="button" class="number" value="4" onclick="agregarNumero()">
+            <input type="button" class="number" value="5" onclick="agregarNumero()">
+            <input type="button" class="number" value="6" onclick="agregarNumero()">
+            <input type="button" class="operator" value="-">
         </div>
         <div class="row-4">
-            <button class="number" onClick="agregarNumero()" value="1">1</button>
-            <button class="number" onClick="agregarNumero()" value="2">2</button>
-            <button class="number" onClick="agregarNumero()" value="3">3</button>
-            <button class="operator" value="+">+</button>
+            <input type="button" class="number" value="1" onclick="agregarNumero()">
+            <input type="button" class="number" value="2" onclick="agregarNumero()">
+            <input type="button" class="number" value="3" onclick="agregarNumero()">
+            <input type="button" class="operator" value="+">
         </div>
         <div class="row-5">
-            <button class="number" onClick="agregarNumero()" value="0" id="zero">0</button>
-            <button id="decimal" value=".">.</button>
-            <button id="equals">=</button>
+            <input type="button" class="number" value="0" onclick="agregarNumero()" id="zero">
+            <input type="button" id="decimal" value=".">.
+            <input type="submit" id="equals" value="=">
+            <input type="button" value="BORRAR" onclick="borrarNumero()">
         </div>
     </div>
-</div>
+</form>
+
+<script>
+    let entrada = document.getElementById("input");
+
+    const agregarNumero = () => {
+        let numero = event.target.value;
+
+        if (entrada.value === "0") {
+            entrada.value = numero;
+        } else {
+            entrada.value += numero;
+        }
+    }
+
+    const borrarNumero = () => {
+        if (entrada.value.length <= 1) {
+            entrada.value = "0";
+        } else {
+            entrada.value = entrada.value.slice(0, -1);
+        }
+    }
+
+    const borrarTodo = () => {
+       entrada.value = "";
+    }
+
+    const invertirSigno = () => {
+        if (entrada.value.startsWith("-")) {
+            entrada.value = entrada.value.slice(1);
+        } else {
+            entrada.value = "-" + entrada.value;
+        }
+    }
+
+</script>
 </body>
 </html>

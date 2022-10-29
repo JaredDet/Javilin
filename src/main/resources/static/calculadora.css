@@ -32,7 +32,7 @@ body {
     bottom: 0;
 }
 
-button {
+input[type="button"], input[type="submit"] {
     border: none;
     border-radius: 50%;
     width: 70px;
@@ -52,7 +52,7 @@ button {
     background-color: antiquewhite;
 }
 
-.row-1 > button {
+.row-1 > input[type="button"] {
     margin-top: 0;
 }
 
