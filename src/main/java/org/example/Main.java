@@ -9,8 +9,7 @@ public class Main {
     public static void main(String[] args) {
         var app = Javalin.create(HtmlAndCssConfig::configure);
         app.get("/", HelloPageController::renderHelloPage);
-        app.get("/calculadora", CalculadoraController::renderNew);
-        app.post("/calculadora", CalculadoraController::renderCalculation);
+        app.get("/calculadora", CalculadoraController::renderPage);
 
         app.start(8080);
     }

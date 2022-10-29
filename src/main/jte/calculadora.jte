@@ -2,6 +2,8 @@
 @import org.example.model.Operacion
 @param Calculadora calculadora
 
+!{var input = calculadora.operacion() == Operacion.NINGUNA ? "0" : calculadora.calcular();}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,13 +15,12 @@
 </head>
 
 <body>
-<form class="calculator" method="post" >
+<form class="calculator">
     <div class="display">
         <div id="display">
-            !{var placeholder = calculadora.operacion() == Operacion.NINGUNA ? "0" : calculadora.calcular();}
-            <input type="text" id="entrada" name="entrada" placeholder="${placeholder}" readonly>
             <input type="text" id="cache" name="cache" hidden readonly>
             <input type="text" id="operacion" name="operacion" hidden readonly>
+            <input type="text" id="input" name="input" value="${input}" readonly>
         </div>
     </div>
     <div class="keys">
@@ -57,7 +58,7 @@
 </form>
 
 <script>
-    let entrada = document.getElementById("entrada");
+    let entrada = document.getElementById("input");
 
     const agregarNumero = () => {
         let numero = event.target.value;

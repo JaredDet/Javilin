@@ -11,13 +11,14 @@ public class CalculadoraController {
     private CalculadoraController() {
     }
 
-    public static void renderNew(Context ctx) {
-        ctx.render("calculadora.jte", Map.of("calculadora", new Calculadora()));
-    }
+    public static void renderPage(Context ctx) {
+        if (ctx.queryParam("operacion") == null) {
+            ctx.render("calculadora.jte", Map.of("calculadora", new Calculadora()));
+        } else {
+            var calculadora = new Calculadora(ctx.queryParam("cache"),
+                    ctx.queryParam("operacion"), ctx.queryParam("input"));
 
-    public static void renderCalculation(Context ctx) {
-        ctx.render("calculadora.jte",
-                Map.of("calculadora", new Calculadora("1", "SUMA", "1"))
-        );
+            ctx.render("calculadora.jte", Map.of("calculadora", calculadora));
+        }
     }
 }
