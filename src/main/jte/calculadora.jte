@@ -13,57 +13,82 @@
 </head>
 
 <body>
-<form class="calculator" >
+<form class="calculator" method="post" >
     <div class="display">
         <div id="display">
-            <input type="text" id="entrada" name="entrada" readonly>
+            !{var placeholder = calculadora.operacion() == Operacion.NINGUNA ? "0" : calculadora.calcular();}
+            <input type="text" id="entrada" name="entrada" placeholder="${placeholder}" readonly>
+            <input type="text" id="cache" name="cache" hidden readonly>
             <input type="text" id="operacion" name="operacion" hidden readonly>
         </div>
     </div>
     <div class="keys">
         <div class="row-1">
-            <button id="clear" class="top" type="button">AC</button>
-            <button class="top" id="negative"><sup>+</sup>/-</button>
-            <button class="top" id="percent">%</button>
-            <button class="operator" value="/">&#247;</button>
+            <input type="button" id="clear" class="top" value="AC" onclick="borrarTodo()">
+            <input type="button" class="top" id="negative" value="+/-" onclick="invertirSigno()">
+            <input type="button" class="top" id="percent" value="%">
+            <input type="button" class="operator" value="/">
         </div>
         <div class="row-2">
-            <button class="number" onclick="agregarNumero()" value="7" type="button">7</button>
-            <button class="number" onclick="agregarNumero()" value="8" type="button">8</button>
-            <button class="number" onclick="agregarNumero()" value="9" type="button">9</button>
-            <button class="operator" value="*">&times;</button>
+            <input type="button" class="number" value="7" onclick="agregarNumero()">
+            <input type="button" class="number" value="8" onclick="agregarNumero()">
+            <input type="button" class="number" value="9" onclick="agregarNumero()">
+            <input type="button" class="operator" value="*">
         </div>
         <div class="row-3">
-            <button class="number" onclick="agregarNumero()" value="4" type="button">4</button>
-            <button class="number" onclick="agregarNumero()" value="5" type="button">5</button>
-            <button class="number" onClick="agregarNumero()" value="6" type="button">6</button>
-            <button class="operator" value="-">-</button>
+            <input type="button" class="number" value="4" onclick="agregarNumero()">
+            <input type="button" class="number" value="5" onclick="agregarNumero()">
+            <input type="button" class="number" value="6" onclick="agregarNumero()">
+            <input type="button" class="operator" value="-">
         </div>
         <div class="row-4">
-            <button class="number" onclick="agregarNumero()" value="1" type="button">1</button>
-            <button class="number" onclick="agregarNumero()" value="2" type="button">2</button>
-            <button class="number" onclick="agregarNumero()" value="3" type="button">3</button>
-            <button class="operator" value="+">+</button>
+            <input type="button" class="number" value="1" onclick="agregarNumero()">
+            <input type="button" class="number" value="2" onclick="agregarNumero()">
+            <input type="button" class="number" value="3" onclick="agregarNumero()">
+            <input type="button" class="operator" value="+">
         </div>
         <div class="row-5">
-            <button class="number" onclick="agregarNumero()" value="0" id="zero" type="button">0</button>
-            <button id="decimal" value=".">.</button>
-            <button id="equals" type="submit">=</button>
-            <button type="button" onclick="borrarNumero()">BORRAR</button>
+            <input type="button" class="number" value="0" onclick="agregarNumero()" id="zero">
+            <input type="button" id="decimal" value=".">.
+            <input type="submit" id="equals" value="=">
+            <input type="button" value="BORRAR" onclick="borrarNumero()">
         </div>
     </div>
 </form>
 
 <script>
+    let entrada = document.getElementById("entrada");
+
     const agregarNumero = () => {
-        document.getElementById("entrada").value += event.target.innerHTML
+        let numero = event.target.value;
+
+        if (entrada.value === "0") {
+            entrada.value = numero;
+        } else {
+            entrada.value += numero;
+        }
     }
 
     const borrarNumero = () => {
-        let entrada = document.getElementById("entrada")
-
-        entrada.value = entrada.value.slice(0, -1)
+        if (entrada.value.length <= 1) {
+            entrada.value = "0";
+        } else {
+            entrada.value = entrada.value.slice(0, -1);
+        }
     }
+
+    const borrarTodo = () => {
+       entrada.value = "";
+    }
+
+    const invertirSigno = () => {
+        if (entrada.value.startsWith("-")) {
+            entrada.value = entrada.value.slice(1);
+        } else {
+            entrada.value = "-" + entrada.value;
+        }
+    }
+
 </script>
 </body>
 </html>
